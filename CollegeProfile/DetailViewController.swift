@@ -8,7 +8,7 @@
 
 import UIKit
 
-class DetailViewController: UIViewController {
+class DetailViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
     @IBOutlet weak var nameField: UITextField!
     @IBOutlet weak var locationField: UITextField!
@@ -16,11 +16,14 @@ class DetailViewController: UIViewController {
     @IBOutlet weak var imageField: UIImageView!
     @IBOutlet weak var websiteField: UITextField!
     
+    var imagePicker = UIImagePickerController()
+    
     var college : College!
     var urlStr = "https://www.google.com"
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        imagePicker.delegate = self
         
         nameField.text = college.name
         locationField.text = college.location
@@ -29,9 +32,22 @@ class DetailViewController: UIViewController {
         websiteField.text = college.website
     }
     
+    func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
+        
+        imagePicker.dismissViewControllerAnimated(true) { 
+            let selectedImage = info[UIImagePickerControllerOriginalImage] as! UIImage
+            self.imageField.image = selectedImage
+        }
+    }
+    
     @IBAction func onTappedGoButton(sender: UIButton) {
         let url = NSURL(string: college.website)
         UIApplication.sharedApplication().openURL(url!)
+    }
+    
+    @IBAction func onTappedLibrary(sender: UIButton) {
+        imagePicker.sourceType = UIImagePickerControllerSourceType.PhotoLibrary
+        presentViewController(imagePicker, animated: true, completion: nil)
     }
     
     @IBAction func onTappedSave(sender: UIButton) {
