@@ -6,6 +6,68 @@
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
+        <!--Detail View Controller-->
+        <scene sceneID="sz4-ci-O7Z">
+            <objects>
+                <viewController id="oSi-xN-K7a" customClass="DetailViewController" customModule="CollegeProfile" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="p49-MN-gqh"/>
+                        <viewControllerLayoutGuide type="bottom" id="12Q-n7-F7B"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="SIy-cy-CKH">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Name" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="o2x-K3-2QX">
+                                <rect key="frame" x="252" y="95" width="97" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Location" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Bip-CX-3Qe">
+                                <rect key="frame" x="252" y="143" width="97" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enrollment" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="XNz-wp-pJ8">
+                                <rect key="frame" x="252" y="189" width="97" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3oI-69-5lN">
+                                <rect key="frame" x="175" y="247" width="250" height="150"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="150" id="GMa-iG-n1I"/>
+                                    <constraint firstAttribute="width" constant="250" id="UI8-fR-Veq"/>
+                                </constraints>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Tf2-ra-3h5">
+                                <rect key="frame" x="283" y="413" width="34" height="30"/>
+                                <state key="normal" title="Save"/>
+                                <connections>
+                                    <action selector="onTappedSave:" destination="oSi-xN-K7a" eventType="touchUpInside" id="cIZ-jZ-Gib"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="XNz-wp-pJ8" firstAttribute="centerX" secondItem="SIy-cy-CKH" secondAttribute="centerX" id="4ai-MP-RqV"/>
+                            <constraint firstItem="3oI-69-5lN" firstAttribute="centerX" secondItem="SIy-cy-CKH" secondAttribute="centerX" id="NWm-Dg-ikw"/>
+                            <constraint firstItem="o2x-K3-2QX" firstAttribute="centerX" secondItem="SIy-cy-CKH" secondAttribute="centerX" id="W9H-DE-aFV"/>
+                            <constraint firstItem="Tf2-ra-3h5" firstAttribute="centerX" secondItem="SIy-cy-CKH" secondAttribute="centerX" id="Was-IR-7rm"/>
+                            <constraint firstItem="Bip-CX-3Qe" firstAttribute="centerX" secondItem="SIy-cy-CKH" secondAttribute="centerX" id="sz5-TC-nB0"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="enrollmentField" destination="XNz-wp-pJ8" id="sTJ-U6-sF1"/>
+                        <outlet property="imageField" destination="3oI-69-5lN" id="9yc-xf-fZq"/>
+                        <outlet property="locationField" destination="Bip-CX-3Qe" id="fe2-UD-t4j"/>
+                        <outlet property="nameField" destination="o2x-K3-2QX" id="uuy-SM-jAC"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Cgb-II-EKI" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1685" y="-379"/>
+        </scene>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
