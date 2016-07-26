@@ -17,6 +17,9 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         super.viewDidLoad()
     }
     
+    //============================================
+    // Setting up the TableView
+    //============================================
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return colleges.count
     }
@@ -25,6 +28,16 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         let cell = tableView.dequeueReusableCellWithIdentifier("MyCell", forIndexPath: indexPath)
         cell.textLabel?.text = colleges[indexPath.row]
         return cell
+    }
+    
+    //============================================
+    // Allows colleges to be deleted
+    //============================================
+    func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+        if editingStyle == .Delete {
+            colleges.removeAtIndex(indexPath.row)
+            tableView.reloadData()
+        }
     }
     
 }
