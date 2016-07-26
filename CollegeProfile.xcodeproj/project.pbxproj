@@ -101,8 +101,8 @@
 			children = (
 				889D4EDB1D4700E0007B3C70 /* AppDelegate.swift */,
 				889D4EDD1D4700E0007B3C70 /* ViewController.swift */,
-				889D4EDF1D4700E0007B3C70 /* Main.storyboard */,
 				88B487011D47C3F6000E79C4 /* College.swift */,
+				889D4EDF1D4700E0007B3C70 /* Main.storyboard */,
 				889D4EE21D4700E0007B3C70 /* Assets.xcassets */,
 				889D4EE41D4700E0007B3C70 /* LaunchScreen.storyboard */,
 				889D4EE71D4700E0007B3C70 /* Info.plist */,
