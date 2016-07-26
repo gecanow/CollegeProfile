@@ -27,7 +27,9 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         colleges.append(College(name: "MIT", location: "Massachussetts", enrollment: 100, image: UIImage(named: "MIT")!))
     }
     
+    //=======================================
     // Set up the table view
+    //=======================================
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return colleges.count
     }
@@ -38,8 +40,9 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         return cell
     }
     
-    
+    //=======================================
     // Allow entries to be deleted
+    //=======================================
     func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         if editingStyle == .Delete {
             colleges.removeAtIndex(indexPath.row)
@@ -47,7 +50,9 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         }
     }
     
+    //=======================================
     // Allow entries to be added
+    //=======================================
     @IBAction func onTappedAdd(sender: UIBarButtonItem) {
         let alert = UIAlertController(title: "Add College", message: nil, preferredStyle: .Alert)
 
@@ -68,7 +73,9 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         self.presentViewController(alert, animated: true, completion: nil)
     }
     
+    //=======================================
     // Allow entries to be re-ordered
+    //=======================================
     func tableView(tableView: UITableView, canMoveRowAtIndexPath indexPath: NSIndexPath) -> Bool {
         return true
     }
@@ -88,6 +95,12 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
             tableView.editing = false
             sender.tag = 0
         }
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        let dvc = segue.destinationViewController as! DetailViewController
+        let index = tableView.indexPathForSelectedRow?.row
+        dvc.college = colleges[index!]
     }
     
 }
