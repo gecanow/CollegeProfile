@@ -45,7 +45,13 @@
                             <constraint firstItem="nkf-zm-inb" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-20" id="wbg-nf-YfG"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="Hjv-Q2-6Ch"/>
+                    <navigationItem key="navigationItem" id="Hjv-Q2-6Ch">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="dre-jD-9GO">
+                            <connections>
+                                <action selector="onTappedPlusButton:" destination="BYZ-38-t0r" id="iIv-If-5ZQ"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="nkf-zm-inb" id="6ry-hS-iBE"/>
                     </connections>
