@@ -14,6 +14,7 @@ class DetailViewController: UIViewController, UIImagePickerControllerDelegate, U
     @IBOutlet weak var locationField: UITextField!
     @IBOutlet weak var enrollmentField: UITextField!
     @IBOutlet weak var imageField: UIImageView!
+    @IBOutlet weak var backgroundImage: UIImageView!
     @IBOutlet weak var websiteField: UITextField!
     
     var imagePicker = UIImagePickerController()
@@ -29,6 +30,8 @@ class DetailViewController: UIViewController, UIImagePickerControllerDelegate, U
         locationField.text = college.location
         enrollmentField.text = String(college.enrollment)
         imageField.image = college.image
+        backgroundImage.image = college.image
+        backgroundImage.alpha = 0.1
         websiteField.text = college.website
     }
     
@@ -37,6 +40,8 @@ class DetailViewController: UIViewController, UIImagePickerControllerDelegate, U
         imagePicker.dismissViewControllerAnimated(true) { 
             let selectedImage = info[UIImagePickerControllerOriginalImage] as! UIImage
             self.imageField.image = selectedImage
+            self.backgroundImage.image = selectedImage
+            self.backgroundImage.alpha = 0.1
         }
     }
     
