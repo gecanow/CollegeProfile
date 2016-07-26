@@ -11,7 +11,7 @@ import UIKit
 class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
     @IBOutlet weak var tableView: UITableView!
-    var colleges = ["Northwestern", "Wash U", "UIC"]
+    var colleges = ["Northwestern", "Harvard", "MIT"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
