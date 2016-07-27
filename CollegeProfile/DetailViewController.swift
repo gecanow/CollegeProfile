@@ -22,6 +22,9 @@ class DetailViewController: UIViewController, UIImagePickerControllerDelegate, U
     var college : College!
     var urlStr = "https://www.google.com"
     
+    //============================================
+    // VIEW DID LOAD
+    //============================================
     override func viewDidLoad() {
         super.viewDidLoad()
         imagePicker.delegate = self
@@ -35,6 +38,9 @@ class DetailViewController: UIViewController, UIImagePickerControllerDelegate, U
         websiteField.text = college.website
     }
     
+    //============================================
+    // Handles picking an image
+    //============================================
     func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
         
         imagePicker.dismissViewControllerAnimated(true) { 
@@ -45,16 +51,26 @@ class DetailViewController: UIViewController, UIImagePickerControllerDelegate, U
         }
     }
     
+    //============================================
+    // On tapped the "go" button for website
+    //============================================
     @IBAction func onTappedGoButton(sender: UIButton) {
         let url = NSURL(string: college.website)
         UIApplication.sharedApplication().openURL(url!)
     }
     
+    //============================================
+    // On tapped the library button under the 
+    // image view
+    //============================================
     @IBAction func onTappedLibrary(sender: UIButton) {
         imagePicker.sourceType = UIImagePickerControllerSourceType.PhotoLibrary
         presentViewController(imagePicker, animated: true, completion: nil)
     }
     
+    //============================================
+    // On tapped the save button
+    //============================================
     @IBAction func onTappedSave(sender: UIButton) {
         college.name = nameField.text!
         college.location = locationField.text!
@@ -63,6 +79,9 @@ class DetailViewController: UIViewController, UIImagePickerControllerDelegate, U
         college.website = websiteField.text!
     }
     
+    //============================================
+    // Prepares for the segue to the map
+    //============================================
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         let dvc = segue.destinationViewController as! MapViewController
         dvc.college = college

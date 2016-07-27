@@ -15,12 +15,20 @@ class MapViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var textField: UITextField!
     
     var college : College!
+    var center = CLLocationCoordinate2D(latitude: 41.8939, longitude: -87.6354)
     
+    //============================================
+    // VIEW DID LOAD FUNCTION
+    //============================================
     override func viewDidLoad() {
         super.viewDidLoad()
         textField.text = college.name
     }
     
+    //============================================
+    // Handles turning the textfield text into
+    // a coordinate
+    //============================================
     func textFieldShouldReturn(textField: UITextField) -> Bool {
         let geocoder = CLGeocoder()
         
@@ -28,11 +36,7 @@ class MapViewController: UIViewController, UITextFieldDelegate {
             if error != nil {
                 // do nothing
             } else {
-                let placemark = placemarks!.first as CLPlacemark!
-                let center = placemark.location?.coordinate
-                let span = MKCoordinateSpanMake(0.01, 0.01)
-                
-                self.displayMap(center!, span: span, pinTitle: self.college.name)
+                self.displayActionSheet(placemarks!)
             }
         }
         
@@ -40,6 +44,35 @@ class MapViewController: UIViewController, UITextFieldDelegate {
         return true
     }
     
+    //============================================
+    // Handles displaying the action sheets
+    // using the options that were returned by
+    // the geocoder
+    //============================================
+    func displayActionSheet(options: [CLPlacemark]) {
+        let span = MKCoordinateSpanMake(0.01, 0.01)
+        
+        let actionController = UIAlertController(title: "Locations", message: "Select a location", preferredStyle: UIAlertControllerStyle.ActionSheet)
+        
+        for option in options {
+            let chooseLocationAction = UIAlertAction(title: option.name , style: .Default, handler: { (Void) in
+                
+                let center = option.location?.coordinate
+                self.displayMap(center!, span: span, pinTitle: option.name!)
+            })
+            actionController.addAction(chooseLocationAction)
+        }
+        
+        let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel, handler: nil)
+        actionController.addAction(cancelAction)
+        
+        self.presentViewController(actionController, animated: true, completion: nil)
+        
+    }
+    
+    //============================================
+    // Displays the map with a pin at the center
+    //============================================
     func displayMap(center: CLLocationCoordinate2D, span: MKCoordinateSpan, pinTitle: String) {
         
         let region = MKCoordinateRegionMake(center, span)
