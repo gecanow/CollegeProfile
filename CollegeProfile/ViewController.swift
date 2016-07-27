@@ -20,7 +20,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         
         editButton.tag = 0
         
-        colleges.append(College(name: "Northwestern", location: "Evanston", enrollment: 100, image: UIImage(named: "Northwestern")!, website: "http://www.northwestern.edu/"))
+        colleges.append(College(name: "Northwestern University", location: "Evanston", enrollment: 100, image: UIImage(named: "Northwestern")!, website: "http://www.northwestern.edu/"))
         
         colleges.append(College(name: "Harvard", location: "Unknown", enrollment: 100, image: UIImage(named: "Harvard")!, website: "http://www.harvard.edu/"))
         
